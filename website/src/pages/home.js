@@ -1,10 +1,8 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import StackGrid from "react-stack-grid";
 import CircularImg from './circularImg';
-// import './style.css'
+
 
 const images = [
     {
@@ -62,8 +60,6 @@ const images = [
 
 
 const Home = () => {
-
-
 
     return (
         <div>

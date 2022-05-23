@@ -46,7 +46,7 @@ const CircularImg = ({ img, index }) => {
     return (
         <div className='textWrapper'>
 
-            <Link style={{ textDecoration: 'none' }} to={`/123`}>
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/123`}>
                 <img onLoad={onImgLoad} id='Images' key={`${index}`} src={img.src} />
 
                 {imgHeight && <div id='textCircular'>
