@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require("express")
 const loginRoute = require('./routes/loginRoute')
 const logoutRoute = require('./routes/logoutRoute')
+const registerRoute = require('./routes/registerRoute')
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -41,6 +42,7 @@ app.use(
 
 app.use('/login', loginRoute)
 app.use('/logout', logoutRoute)
+app.use('/register', registerRoute)
 
 
 app.use((req, res) => {

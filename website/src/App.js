@@ -19,10 +19,14 @@ function App(props) {
       axios
         .get(`${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/login`)
         .then((response) => {
+
           if (response.data.loggedIn == true) {
+            let username = response.data.username
+            let admin = response.data.admin
+            console.log(username, admin);
             props.dispatch({
               type: "login",
-              data: response.data.username,
+              data: { username, admin }
             });
           }
         });
@@ -48,7 +52,8 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username,
+    username: state.user.username,
+    admin: state.user.admin,
   };
 };
 export default connect(mapStateToProps)(App);

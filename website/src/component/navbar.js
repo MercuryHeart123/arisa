@@ -45,11 +45,10 @@ const Navbar = (props) => {
         axios.post(`${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/logout`).then(() => {
             props.dispatch({
                 type: 'logout',
-                data: false,
+                data: false
             })
         })
     }
-
     return (
         <Nav>
             <NavLink to={'/'}>Arisa.B</NavLink>
@@ -61,6 +60,7 @@ const Navbar = (props) => {
                 <NavLink to={'/work1'}>Work1</NavLink>
                 <NavLink to={'/work2'}>Work2</NavLink>
                 <NavLink to={'/about'}>About</NavLink>
+                {props.admin && <NavLink to={'/edit'}>Edit</NavLink>}
             </NavWrapper>
 
             <NavLine />
@@ -69,8 +69,10 @@ const Navbar = (props) => {
 }
 
 const mapStateToProps = (state) => {
+
     return {
-        username: state.username,
+        username: state.user.username,
+        admin: state.user.admin,
     };
 };
 export default connect(mapStateToProps)(Navbar);

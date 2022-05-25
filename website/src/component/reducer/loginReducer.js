@@ -1,7 +1,9 @@
 const loginReducer = (state = false, action) => {
     switch (action.type) {
         case 'login':
-            state = action.data;
+            state = {}
+            state.username = action.data.username;
+            state.admin = action.data.admin;
             return state;
 
         case 'logout':

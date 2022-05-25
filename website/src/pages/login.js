@@ -24,9 +24,10 @@ const Login = (props) => {
             .post(url, formData)
             .then((res) => {
                 let username = res.data.username;
+                let admin = res.data.admin;
                 props.dispatch({
                     type: "login",
-                    data: username,
+                    data: { username, admin },
                 });
                 setRedirect(true)
             })
@@ -92,7 +93,8 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        username: state.username,
+        username: state.user.username,
+        admin: state.user.admin,
     };
 };
 export default connect(mapStateToProps)(Login);
