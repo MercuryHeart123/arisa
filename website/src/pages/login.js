@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { connect } from "react-redux";
 import axios from "axios";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -74,6 +74,13 @@ const Login = (props) => {
                         placeholder="Enter password"
                         style={{ marginTop: "2vh" }}
                     />
+                </div>
+                <div>
+                    Don't have account?, <span><Link to={"/register"}>
+                        Register
+                    </Link>
+
+                    </span>
                 </div>
                 {loginFail && <div style={{ color: 'red', paddingTop: '0.5rem' }}>
                     Username and Password doesn't match.

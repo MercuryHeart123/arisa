@@ -41,7 +41,7 @@ function App(props) {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/edit' element={<Edit />} />
+          {props.admin && <Route path='/edit' element={<Edit />} />}
           <Route exact path='*' element={<NotFound />} />
         </Routes>
         <Footer />
