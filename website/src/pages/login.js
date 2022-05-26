@@ -10,6 +10,7 @@ const Login = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(event);
         let username = event.target.username.value;
         let password = event.target.password.value;
         let ip = process.env.REACT_APP_IP || "localhost";

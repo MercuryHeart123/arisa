@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
 import About from './pages/about';
 import Login from './pages/login';
+import Register from './pages/register';
 import Edit from './pages/edit';
 import Navbar from './component/navbar';
 import Footer from './component/footer';
@@ -41,6 +42,7 @@ function App(props) {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
           {props.admin && <Route path='/edit' element={<Edit />} />}
           <Route exact path='*' element={<NotFound />} />
         </Routes>
