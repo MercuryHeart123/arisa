@@ -5,6 +5,7 @@ const uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.en
 
 const register = async (req, res) => {
     let { username, password, cPassword, email } = req.body;
+    username = username.toLowerCase()
     let query = { username };
     let status, code
     const client = new MongoClient(uri);

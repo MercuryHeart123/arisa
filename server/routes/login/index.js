@@ -16,7 +16,8 @@ const loginGet = (req, res) => {
 }
 
 const loginPost = async (req, res) => {
-    const { username, password } = req.body;
+    let { username, password } = req.body;
+    username = username.toLowerCase()
     let query = { username };
     const client = new MongoClient(uri);
     await client.connect();
