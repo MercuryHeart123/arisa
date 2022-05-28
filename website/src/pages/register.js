@@ -22,9 +22,6 @@ function Register() {
     const [pass,setPass] = useState(true);
     const [error,setError] = useState("");
 
-    useEffect(()=>{
-        
-    })
 
     const handleSubmit = (e)=>{
         // console.log(e);
