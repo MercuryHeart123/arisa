@@ -46,3 +46,17 @@
     transform-origin: top left;
 
 }
+
+.imgStore {
+    width: 70%;
+    cursor: pointer;
+    background: white;
+    border-radius: 4px;
+    border: solid 2px #9cccff;
+}
+
+.imgStore:hover {
+    background: #0d6efcff;
+    color: white;
+    transition: 0.35s;
+}

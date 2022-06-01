@@ -3,6 +3,8 @@ const express = require("express")
 const loginRoute = require('./routes/loginRoute')
 const logoutRoute = require('./routes/logoutRoute')
 const registerRoute = require('./routes/registerRoute')
+const imgRoute = require('./routes/imgRoute')
+const bodyParser = require('body-parser');
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -14,11 +16,16 @@ const port = process.env.PORT || 8080
 app.use(
     cors({
         origin: ["http://localhost:3000"],
-        methods: ["GET", "POST"],
+        methods: ["GET", "POST", "DELETE"],
         credentials: true,
     })
 );
-app.use(express.json({ limit: "100mb" }));
+// app.use(bodyParser.json());
+// app.use(express.json({ limit: "100mb" }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(
     session({
@@ -43,6 +50,7 @@ app.use(
 app.use('/login', loginRoute)
 app.use('/logout', logoutRoute)
 app.use('/register', registerRoute)
+app.use('/image', imgRoute)
 
 
 app.use((req, res) => {
