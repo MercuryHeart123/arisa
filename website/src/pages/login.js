@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from "react-redux";
+import { AiFillEyeInvisible , AiOutlineEye } from 'react-icons/ai';
 import axios from "axios";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const Login = (props) => {
     let [redirect, setRedirect] = useState(false)
     let [loginFail, setLoginFail] = useState(false)
+    const [showPassword,setShowPassword] = useState(false);
+
+    const passwordVisibility = ()=>{
+        setShowPassword(!showPassword);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -61,20 +67,38 @@ const Login = (props) => {
                         required={true}
                         name="username"
                         placeholder="Enter Username"
-                        style={{ marginTop: "2vh" }}
+                        style={{ marginTop: "2vh",width:"95%" }}
                     />
                 </div>
 
                 <div className="form-group" style={{ marginTop: "2vh" }}>
                     <label>Password</label>
-                    <input
+                    {/* <input
                         type="password"
                         className="form-control"
                         required={true}
                         name="password"
                         placeholder="Enter password"
                         style={{ marginTop: "2vh" }}
-                    />
+                    /> */}
+                     <div style={{display:"flex"}}>
+                        <input
+                            type={!showPassword ? "password" : "text"}
+                            className="form-control"
+                            required={true}
+                            name="password"
+                            placeholder="Password"
+                            style={{ marginTop: "2vh"}}
+                        />
+                     <div style={{marginLeft:"0.5vw"}}>
+                        {!showPassword ? <AiOutlineEye style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
+                            onClick={passwordVisibility}
+                        /> : 
+                        <AiFillEyeInvisible style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
+                            onClick={passwordVisibility}
+                        />}
+                    </div>
+                </div>
                 </div>
                 <div>
                     Don't have account?, <span><Link to={"/register"}>
