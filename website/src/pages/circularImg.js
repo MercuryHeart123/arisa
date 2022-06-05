@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import './style.css'
 
-const text = 'Established 2012'
+let ip = process.env.REACT_APP_IP || "localhost";
+let port = process.env.REACT_APP_PORT || 8080;
+const url = `${ip}:${port}/image/view/`;
 const CircularImg = ({ img, index }) => {
     const [imgWidth, setImgWidth] = useState()
     const [imgHeight, setImgHeight] = useState()
@@ -46,11 +48,11 @@ const CircularImg = ({ img, index }) => {
     return (
         <div className='textWrapper'>
 
-            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/123`}>
-                <img onLoad={onImgLoad} id='Images' key={`${index}`} src={img.src} />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/view/${img.name}`}>
+                <img onLoad={onImgLoad} id='Images' key={`${index}`} src={url + img.featureImage} />
 
                 {imgHeight && <div id='textCircular'>
-                    {createCircular(text)}
+                    {createCircular(img.name)}
                 </div>}
 
 

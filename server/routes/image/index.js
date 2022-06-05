@@ -37,14 +37,15 @@ const storage = new GridFsStorage({
 const upload = multer({ storage });
 
 const Upload = (req, res) => {
-    // console.log(req.body);
     res.status(200).end('success')
 }
 
 const View = (req, res) => {
+    // console.log(req.params.filename);
     gfs.find({ filename: req.params.filename }).toArray((err, files) => {
+
         if (!files[0] || files.length === 0) {
-            return res.status(200).json({
+            return res.status(404).json({
                 success: false,
                 message: 'No files available',
             });
@@ -61,22 +62,62 @@ const View = (req, res) => {
 }
 
 const List = (req, res) => {
-    gfs.find().toArray((err, files) => {
-        // Check if files
-        if (!files || files.length === 0) {
-            return res.status(404).json({
-                err: 'No files exist'
-            });
-        }
+    if (req.params.category == "all-project") {
+        conn.collection("project").find().toArray((err, files) => {
+            if (err) {
+                console.log(err);
+            }
+            // Check if files
+            if (!files || files.length === 0) {
+                return res.status(404).json({
+                    err: 'No files exist'
+                });
+            }
 
-        // Files exist
-        return res.json(files);
-    });
+            // Files exist
+            return res.json(files);
+        });
+
+    }
+    else if (req.params.category == "all") {
+        gfs.find().toArray((err, files) => {
+            if (err) {
+                console.log(err);
+            }
+            // Check if files
+            if (!files || files.length === 0) {
+                return res.status(404).json({
+                    err: 'No files exist'
+                });
+            }
+
+            // Files exist
+            return res.json(files);
+        });
+    }
+    else if (req.params.category) {
+        conn.collection('project').find({ category: req.params.category }).toArray((err, files) => {
+            // Check if files
+            if (err) {
+                console.log(err);
+            }
+            if (!files || files.length === 0) {
+                return res.status(404).json({
+                    err: 'No files exist'
+                });
+            }
+
+            // Files exist
+            return res.json(files);
+        });
+    }
 }
 
 const Delete = (req, res) => {
-    console.log(req.params.filename);
     gfs.find({ filename: req.params.filename }).toArray((err, files) => {
+        if (err) {
+            console.log(err);
+        }
         // Check if files
         if (!files || files.length === 0) {
             return res.status(404).json({
@@ -87,7 +128,36 @@ const Delete = (req, res) => {
         // Files exist
         conn.collection("uploads.files").deleteMany({ _id: files[0]._id })
         conn.collection("uploads.chunks").deleteMany({ files_id: files[0]._id })
+        conn.collection('project').find({ filenames: { $all: [`${req.params.filename}`] } })
+            .toArray((err, res) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).end()
+                }
+                res.forEach((item, index) => {
+                    let doc = {}
+                    let text = JSON.stringify(item)
+                    let newVal = JSON.parse(text)
+                    let fileNameIndex = newVal.filenames.indexOf(req.params.filename);
+                    if (fileNameIndex !== -1) {
+                        newVal.filenames.splice(fileNameIndex, 1)
+                        let filenames = newVal.filenames
+                        doc.filenames = filenames
+                        if (newVal.featureImage == req.params.filename) {
+                            doc.featureImage = filenames[0]
+                        }
+                        let _id = item._id
+                        let objId = { _id }
+                        let newValue = { $set: doc };
+                        conn.collection('project').findOneAndUpdate(objId, newValue, (err, doc) => {
+                            if (err) {
+                                console.log(err);
+                            }
+                        })
+                    }
+                })
 
+            })
         return res.json(files);
     });
 }
@@ -98,5 +168,6 @@ module.exports = {
     View,
     Delete,
     List,
-    upload
+    upload,
+    conn
 }

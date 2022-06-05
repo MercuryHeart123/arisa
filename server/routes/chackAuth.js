@@ -1,5 +1,5 @@
 const checkAuth = (req, res, next) => {
-    if (!req.session.username) {
+    if (!req.session.admin) {
         res.end();
     } else {
         next();

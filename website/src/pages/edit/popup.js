@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './popup.css'
 import * as Ai from 'react-icons/ai'
 import axios from "axios";
@@ -6,17 +6,12 @@ import axios from "axios";
 let ip = process.env.REACT_APP_IP || "localhost";
 let port = process.env.REACT_APP_PORT || 8080;
 const Popup = (props) => {
-    const ref = useRef()
     const [img, setImg] = useState()
     const [allImg, setAllImg] = useState()
 
-    const btnAddImgClick = () => {
-        ref.current.click();
-
-    }
 
     const updateData = () => {
-        const url = `${ip}:${port}/image/list`;
+        const url = `${ip}:${port}/image/list/all`;
         axios.get(url).then((res) => {
             let data = res.data
             setAllImg(data)
@@ -28,14 +23,10 @@ const Popup = (props) => {
     }, [])
 
     useEffect(() => {
-        console.log(img);
         const url = `${ip}:${port}/image/upload`;
         let formData = new FormData()
         formData.append('file', img)
         axios.defaults.withCredentials = true;
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
-        }
         axios
             .post(url, formData, {
                 headers: {
@@ -44,7 +35,7 @@ const Popup = (props) => {
             })
             .then((res) => {
                 updateData()
-                console.log(res);
+
             })
             .catch((err) => {
                 console.log(err);
@@ -84,7 +75,7 @@ const Popup = (props) => {
     return (props.trigger ?
         (<div className='popup' >
             <div className='popup-inner'>
-                <button className='close-btn' onClick={() => (props.setPopup(false))}>
+                <button className='close-btn' onClick={() => (props.setPopupImgStore(false))}>
                     close
                 </button>
                 <span>

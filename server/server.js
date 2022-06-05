@@ -4,6 +4,7 @@ const loginRoute = require('./routes/loginRoute')
 const logoutRoute = require('./routes/logoutRoute')
 const registerRoute = require('./routes/registerRoute')
 const imgRoute = require('./routes/imgRoute')
+const apiRoute = require('./routes/apiRoute')
 const bodyParser = require('body-parser');
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -51,6 +52,7 @@ app.use('/login', loginRoute)
 app.use('/logout', logoutRoute)
 app.use('/register', registerRoute)
 app.use('/image', imgRoute)
+app.use('/api', apiRoute)
 
 
 app.use((req, res) => {

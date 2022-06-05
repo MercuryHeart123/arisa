@@ -1,0 +1,128 @@
+.imgStore {
+    width: 70%;
+    cursor: pointer;
+    background: white;
+    border-radius: 4px;
+    border: solid 2px #9cccff;
+}
+
+.imgStore:hover {
+    background: #0d6efcff;
+    color: white;
+    transition: 0.35s;
+}
+
+.chooseImg {
+    width: 100%;
+    cursor: pointer;
+    background: white;
+    border-radius: 4px;
+    border: solid 2px #9cccff;
+}
+
+.chooseImg:hover {
+    background: #0d6efcff;
+    color: white;
+    transition: 0.35s;
+}
+
+.button-section button {
+    margin: 0 100px;
+}
+
+.category {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.category div {
+    border: solid 3px #e5e5e5;
+    border-radius: 10px;
+    padding: 10px 20%;
+    cursor: pointer;
+}
+
+.container {
+    text-align: center;
+}
+
+.container button {
+    margin: 20px 0;
+    width: 70%;
+    cursor: pointer;
+    background: white;
+    border-radius: 10px;
+    border: solid 2px #9cccff;
+}
+
+.container button:hover {
+    background: #0d6efcff;
+    color: white;
+    transition: 0.35s;
+}
+
+.project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+
+.project-gallery img {
+    cursor: pointer;
+    height: 225px;
+    width: auto;
+    margin: 20px;
+}
+
+.back-btn {
+    padding: 6px 12px;
+    background-color: white;
+    border-radius: 4px;
+    border: solid 2px #e5e5e5;
+}
+
+.back-btn:hover {
+    background-color: #e5e5e5;
+    border: solid 2px #8e8e8e;
+}
+
+
+.chooseImgWrap {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    /* z-index: -1; */
+}
+
+.chooseEachImg {
+    width: 300px;
+    height: auto;
+    padding: 1rem;
+}
+
+.chooseEachImg:hover {
+    opacity: 0.5;
+    transition: 0.2s;
+}
+
+.delete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    opacity: 0;
+    background-color: rgba(0, 0, 255, 0);
+    transform: translate(-50%, -50%);
+}
+
+
+.chooseImgWrap:hover .delete {
+    transition: 0.2s;
+    opacity: 1;
+}
+
+.chooseImgWrap:hover .chooseEachImg {
+    opacity: 0.5;
+}

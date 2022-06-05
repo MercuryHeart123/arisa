@@ -4,7 +4,7 @@ const router = express.Router()
 const imgController = require('./image')
 
 router.get('/view/:filename', imgController.View);
-router.get('/list', imgController.List);
+router.get('/list/:category', imgController.List);
 router.delete('/delete/:filename', checkAuth, imgController.Delete);
 router.post('/upload', checkAuth, imgController.upload.single('file'), imgController.Upload);
 

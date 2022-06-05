@@ -56,9 +56,8 @@ const Navbar = (props) => {
             {props.username && <NavAuth to={'/'} onClick={Logout}>Logout</NavAuth>}
 
             <NavWrapper>
-                <NavLink to={'/'}>Home</NavLink>
-                <NavLink to={'/work1'}>Work1</NavLink>
-                <NavLink to={'/work2'}>Work2</NavLink>
+                <NavLink to={'/graphic-design'}>Graphic design</NavLink>
+                <NavLink to={'/interior-design'}>Interior design</NavLink>
                 <NavLink to={'/about'}>About</NavLink>
                 {props.admin && <NavLink to={'/edit'}>Edit</NavLink>}
             </NavWrapper>
