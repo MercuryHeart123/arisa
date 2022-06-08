@@ -1,4 +1,4 @@
-import React ,{useState,useEffect} from 'react'
+import React ,{useState} from 'react'
 import styled from 'styled-components'
 import ReactLoading from 'react-loading';
 import ImagePopup from './images-slide/imagePopup';
@@ -14,12 +14,36 @@ const Gallery = styled.div`
 const Image = styled.img`
     width: 300px;
     cursor: pointer;
+    transition: 1s ease;
+    &:hover{
+        transform: scale(1.08);
+        transition-duration: 0.2s;
+    }
+`
+const Frame = styled.div`
+    padding: 50px;
+    position: relative;
     
+`
+const Wrapper = styled.div`
+    transition: 1s ease;
+    &:hover{
+        transform: scale(1.08);
+        transition-duration: 0.2s;
+    }
+`
+
+const PicNames = styled.p`
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 300px;
 `
 
 const View = (props) => {
     const [loading,setLoading] = useState(true);
     const [imgPopup,setImgPopup] = useState(false);
+    const [imgIndex,setImgIndex] = useState(1);
 
     let data = props.data
     let img = data.filenames;
@@ -30,10 +54,11 @@ const View = (props) => {
     return (props.data ? (
         <div>
             <ImagePopup 
-            trigger={imgPopup} 
-            imgPopup={setImgPopup}
-            data={img}
-            url={url}
+                trigger={imgPopup} 
+                imgPopup={setImgPopup}
+                index={imgIndex}
+                data={img}
+                url={url}
             />
             <h1 style={{textAlign:"center",marginBottom:"4vh",marginTop:"4vh"}}>
                 {data.name}
@@ -44,12 +69,15 @@ const View = (props) => {
                     if(index < 10){ num = "0"+index }
                     if(index == 0){ return }
                     return(
-                    <div style={{padding:"50px",position:"relative"}} key={index} >
-                        <Image src={`${url + image}`} onClick={()=>{
-                            setImgPopup(true) 
-                        }}/>
-                        <p style={{marginLeft:"5px",width:"300px",marginTop:"5px",position:"absolute"}}>{num}</p>
-                    </div>
+                    <Frame key={index} >
+                        <Wrapper>
+                            <Image src={`${url + image}`} onClick={()=>{
+                                setImgIndex(index)
+                                setImgPopup(true)
+                            }}/>
+                            <PicNames>{num}</PicNames>
+                        </Wrapper>
+                    </Frame>
                     )
                 })}
             </Gallery>  
