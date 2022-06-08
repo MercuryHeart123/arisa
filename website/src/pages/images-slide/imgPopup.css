@@ -1,0 +1,86 @@
+.popup {
+    position: fixed;
+    top: 0;
+    /* left: 0; */
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.slide{
+    opacity: 0;
+    transition: 1s ease;
+  }
+  
+.slide.active{
+    opacity: 1;
+    transform: scale(1.08);
+    transition-duration: 1s;
+}
+
+.image{
+    width: 600px;
+    height: 400px;
+}
+
+.rightArrow{
+    color: #FFF;
+    position: absolute;
+    top: 50%;
+    right: 150px;
+    font-size: 5rem;
+    z-index: 10;
+    cursor: pointer;
+    transition: 1s ease;
+  }
+
+.rightArrow :hover{
+    
+    transform: scale(1.08);
+    transition-duration: 0.2s;
+  }
+
+
+.leftArrow{
+    color: #FFF;
+    position: absolute;
+    top: 50%;
+    left: 150px;
+    font-size: 5rem;
+    z-index: 10;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.leftArrow :hover{
+    
+    transform: scale(1.08);
+    transition-duration: 0.2s;
+  }
+
+.numpics{
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.closeButton{
+  position: absolute;
+  color: #FFF;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  cursor: pointer;
+  font-size: 5rem;
+  transition: 1s ease;
+}
+
+.closeButton :hover{
+    transform: scale(1.08);
+    transition-duration: 0.2s;
+}

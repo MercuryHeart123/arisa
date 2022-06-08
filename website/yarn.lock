@@ -9000,7 +9000,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@^15.5.10", "prop-types@^15.5.6", "prop-types@^15.7.2":
+"prop-types@^15.5.10", "prop-types@^15.5.6", "prop-types@^15.6.0", "prop-types@^15.7.2":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -9242,6 +9242,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-18.1.0.tgz"
   "version" "18.1.0"
 
+"react-loading@^2.0.3":
+  "integrity" "sha512-Vdqy79zq+bpeWJqC+xjltUjuGApyoItPgL0vgVfcJHhqwU7bAMKzysfGW/ADu6i0z0JiOCRJjo+IkFNkRNbA3A=="
+  "resolved" "https://registry.npmjs.org/react-loading/-/react-loading-2.0.3.tgz"
+  "version" "2.0.3"
+
 "react-redux@^8.0.2":
   "integrity" "sha512-nBwiscMw3NoP59NFCXFf02f8xdo+vSHT/uZ1ldDwF7XaTpzm+Phk97VT4urYBl5TYAPNVaFm12UHAEyzkpNzRA=="
   "resolved" "https://registry.npmjs.org/react-redux/-/react-redux-8.0.2.tgz"
@@ -9365,7 +9370,7 @@
     "prop-types" "^15.5.6"
     "warning" "^3.0.0"
 
-"react@*", "react@^0.14.0 || ^15.0.0-0 || ^16.0.0", "react@^15.0.0 || ^16.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2", "react@<18.0.0", "react@>= 16.8.0", "react@>=15.3.0", "react@>=16.8", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0-0 || ^16.0.0", "react@^15.0.0 || ^16.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2", "react@<18.0.0", "react@>= 16.8.0", "react@>=0.14.0", "react@>=15.3.0", "react@>=16.8", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

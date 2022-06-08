@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import StackGrid from "react-stack-grid";
 import CircularImg from '../circularImg';
@@ -13,6 +12,7 @@ const Graphic = () => {
         const url = `${ip}:${port}/image/list/graphic-design`;
         axios.get(url).then((res) => {
             let data = res.data
+            // console.log(data);
             setImages(data)
         })
 
