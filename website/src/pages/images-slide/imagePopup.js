@@ -2,9 +2,15 @@ import React , {useEffect, useState} from 'react'
 import './imgPopup.css'
 import {IoMdArrowDropleftCircle,IoMdArrowDroprightCircle,IoIosClose} from 'react-icons/io'
 
-function ImagePopup(props) {
+function ImagePopup(props) {    
+    
+    console.log(props.index);
+    
+    const [current,setCurrent] = useState();
 
-    const [current,setCurrent] = useState(props.index);
+    useEffect(()=>{
+        setCurrent(props.index)
+    },[props.index])
 
     const img = props.data
     const length = props.data.length;
@@ -22,7 +28,7 @@ function ImagePopup(props) {
     <div className='popup' >
         <IoIosClose className='closeButton' onClick={()=>{
             props.imgPopup(false)
-            setCurrent(1)
+            // setCurrent(1)
         }}/>
         <IoMdArrowDroprightCircle className="rightArrow" onClick={nextImg}/>
         <IoMdArrowDropleftCircle className="leftArrow" onClick={prevImg}/>
