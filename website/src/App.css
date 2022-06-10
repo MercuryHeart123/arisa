@@ -1,8 +1,10 @@
-*{
+* {
   box-sizing: border-box;
 }
 
 .app {
   margin: 0;
   max-width: 100vw;
+  font-family: 'Josefin Sans', sans-serif;
+
 }
