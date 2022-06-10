@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import loadingData from "./loading.json";
 import { useLottie } from "lottie-react"
 
@@ -16,7 +15,6 @@ const NotFound = () => {
         <div style={{margin:"auto",position:"relative"}}>
             <div style={{textAlign:"center",margin:"auto",width:"1000px",height:"500px"}}>
                 {View}
-                
             </div>   
         </div>   
     )
