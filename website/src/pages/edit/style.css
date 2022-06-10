@@ -71,8 +71,7 @@
 
 .project-gallery img {
     cursor: pointer;
-    height: 225px;
-    width: auto;
+    width: 225px;
     margin: 20px;
 }
 

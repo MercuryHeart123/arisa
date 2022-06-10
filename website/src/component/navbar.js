@@ -123,8 +123,19 @@ const Navbar = (props) => {
                             <BsCircleFill style={{ color: "#FCDD37" }} />
                         </NavDot>
                     </NavContent>
-                    {props.admin && <NavLink to={'/edit'}>Edit content</NavLink>}
-                    {props.admin && <NavLink to={'/editprofile'}>Edit profile</NavLink>}
+                    {props.admin &&
+                        <NavContent>
+                            <NavLink to={'/edit'}>Edit content</NavLink>
+                            <NavDot>
+                                <BsCircleFill style={{ color: "#297373" }} />
+                            </NavDot>
+                        </NavContent>}
+                    {props.admin && <NavContent>
+                        <NavLink to={'/editprofile'}>Edit profile</NavLink>
+                        <NavDot>
+                            <BsCircleFill style={{ color: "#FF8552" }} />
+                        </NavDot>
+                    </NavContent>}
                 </NavWrapper>
                 {!props.username && <NavAuth to={'/login'}>Login</NavAuth>}
                 {props.username && <NavAuth to={'/'} onClick={Logout}>Logout</NavAuth>}
