@@ -3,6 +3,7 @@ const { ObjectId } = require('mongodb');
 let conn = imgController.conn
 
 const deleteProject = (req, res) => {
+    console.log(req.body);
     let { _id } = req.body
     console.log(_id);
     _id = ObjectId(_id)
@@ -38,13 +39,45 @@ const Post = (req, res) => {
     })
 }
 
-const postProfile = (req, res) => {
+const postProfile = async(req, res) => {
     let { title, caption, filenames } = req.body
+    let doc = {title,caption,filenames};
+    await conn.collection('about').find().toArray((err,files)=>{
+        
+        if(files.length === 0){
+            conn.collection('about').insertOne(doc)
+            res.status(200).end()
+        }
+        conn.collection('about').findOneAndUpdate(files[0],{$set:doc},(err,succes)=>{
+            if(err){
+                console.log(err);
+                res.status(500).end()
+            }else{
+                console.log(succes,"sdsd");
+                res.status(200).end()
+            }
+            
+        })
+    })
     res.status(200).end()
+}
+
+const getProfile = (req,res)=>{
+    conn.collection('about').find().toArray((err,files)=>{
+        if(err){
+            console.log(err);
+            res.status(500).end()
+        }
+        let data = files;
+        res.send(data[0])
+        console.log(data[0]);
+       
+    })
 }
 
 module.exports = {
     Post,
     deleteProject,
-    postProfile
+    postProfile,
+    getProfile
 }

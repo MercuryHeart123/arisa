@@ -2,26 +2,32 @@ import React, { useEffect, useState } from 'react'
 import ChooseImg from './chooseImg'
 import './editprofile.css'
 import axios from 'axios'
+import { Navigate } from 'react-router-dom';
 
 const EditProfile = (props) => {
     const [popupChooseImg, setPopupChooseImg] = useState(false)
     const [filenames, setFilenames] = useState()
     const [title, setTitle] = useState()
     const [caption, setCaption] = useState()
+    const [success,setSucces] = useState(false)
+
     let ip = process.env.REACT_APP_IP || "localhost";
     let port = process.env.REACT_APP_PORT || 8080;
     const imgUrl = `${ip}:${port}/image/view/`;
+    
     useEffect(() => {
+        
         updateData()
     }, [])
 
     const updateData = () => {
-        const url = `${ip}:${port}/image/list/profile`;
+        const url = `${ip}:${port}/api/getprofile`;
         axios
             .get(url)
             .then((res) => {
                 let data = res.data
-                setFilenames(data.filename)
+                console.log(data);
+                setFilenames(data.filenames)
                 setTitle(data.title)
                 setCaption(data.caption)
             })
@@ -50,11 +56,13 @@ const EditProfile = (props) => {
             .catch((err) => {
                 console.log(err);
             });
+        setSucces(true)
     };
 
     return (
         <div className="containerEditProfile">
-            {filenames ? <img src={`${imgUrl + filenames}`} /> : <img src='https://via.placeholder.com/250x250' />}
+            {success && <Navigate to="/about"/>}
+            {filenames ? <img src={`${imgUrl + filenames}`} className="profileImage"/> : <img src='https://via.placeholder.com/250x250' className="profileImage"/>}
             <div className="line"></div>
             <button class='changeImg' onClick={() => { setPopupChooseImg(true) }}>
                 Change profile image

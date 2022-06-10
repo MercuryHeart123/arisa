@@ -1,18 +1,39 @@
-import React from 'react'
+import React , {useEffect, useState}from 'react'
+import axios from 'axios'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import { BsLine, BsTelephone } from 'react-icons/bs'
 import './style.css'
 
+
+let ip = process.env.REACT_APP_IP || "localhost";
+let port = process.env.REACT_APP_PORT || 8080;
+
 const About = () => {
+
+    const [data,setData] = useState([])
+
+    useEffect(()=>{
+        let url = `${ip}:${port}/api/getprofile`
+        console.log(url);
+        axios.get(url)
+        .then((res)=>{
+            console.log(res);
+            setData(res.data);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    },[])
+
     return (
         <div className="containerProfile">
             <div className="profile">
-                <img src='https://via.placeholder.com/250x250' />
+                <img src={`${ip}:${port}/image/view/${data.filenames}`} />
                 <h1>
-                    Title
+                   {data.title}
                 </h1>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, expedita eveniet. Nemo ipsam quo placeat ab ea repellat architecto veritatis ad dolore alias, earum optio error quas corrupti voluptate rerum!
+                    {data.caption}
                 </p>
             </div>
 
