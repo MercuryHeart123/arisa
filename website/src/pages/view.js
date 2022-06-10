@@ -43,7 +43,7 @@ const PicNames = styled.p`
 const View = (props) => {
     const [loading,setLoading] = useState(true);
     const [imgPopup,setImgPopup] = useState(false);
-    const [imgIndex,setImgIndex] = useState(1);
+    const [imgIndex,setImgIndex] = useState();
 
     let data = props.data
     let img = data.filenames;
