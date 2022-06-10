@@ -1,6 +1,5 @@
 import React ,{useState} from 'react'
 import styled from 'styled-components'
-import ReactLoading from 'react-loading';
 import ImagePopup from './images-slide/imagePopup';
 
 const Gallery = styled.div`
@@ -41,7 +40,7 @@ const PicNames = styled.p`
 `
 
 const View = (props) => {
-    const [loading,setLoading] = useState(true);
+
     const [imgPopup,setImgPopup] = useState(false);
     const [imgIndex,setImgIndex] = useState();
 

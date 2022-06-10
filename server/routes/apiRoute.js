@@ -5,6 +5,7 @@ const apiController = require('./api')
 
 router.post('/post', checkAuth, apiController.Post);
 router.post('/delete', checkAuth, apiController.deleteProject);
-router.post('/postprofile', checkAuth, apiController.postProfile);
+router.post('/postprofile',checkAuth, apiController.postProfile);
+router.get('/getprofile', apiController.getProfile);
 
 module.exports = router
