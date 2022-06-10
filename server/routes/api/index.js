@@ -36,11 +36,15 @@ const Post = (req, res) => {
         }
         res.status(200).end()
     })
+}
 
-
+const postProfile = (req, res) => {
+    let { title, caption, filenames } = req.body
+    res.status(200).end()
 }
 
 module.exports = {
     Post,
-    deleteProject
+    deleteProject,
+    postProfile
 }

@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import Graphic from './pages/graphic-design';
 import Interior from './pages/interior-design';
 import View from './pages/view';
+import EditProfile from './pages/edit/editprofile';
 
 
 function App(props) {
@@ -68,8 +69,10 @@ function App(props) {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           {props.admin && <Route path='/edit' element={<Edit />} />}
+          {props.admin && <Route path='/editprofile' element={<EditProfile />} />}
           {allProject && createEachProjectRoute()}
           <Route exact path='*' element={<NotFound />} />
+
         </Routes>
         <Footer />
       </Router>

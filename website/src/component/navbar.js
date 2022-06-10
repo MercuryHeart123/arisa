@@ -59,7 +59,8 @@ const Navbar = (props) => {
                 <NavLink to={'/graphic-design'}>Graphic design</NavLink>
                 <NavLink to={'/interior-design'}>Interior design</NavLink>
                 <NavLink to={'/about'}>About</NavLink>
-                {props.admin && <NavLink to={'/edit'}>Edit</NavLink>}
+                {props.admin && <NavLink to={'/edit'}>Edit content</NavLink>}
+                {props.admin && <NavLink to={'/editprofile'}>Edit profile</NavLink>}
             </NavWrapper>
 
             <NavLine />

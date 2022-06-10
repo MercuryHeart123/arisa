@@ -9,7 +9,10 @@ const ChooseImg = (props) => {
     let port = process.env.REACT_APP_PORT || 8080;
 
     useEffect(() => {
-        props.setUpdateChooseImg(() => () => updateData())
+        updateData()
+        if (!props.isProfile) {
+            props.setUpdateChooseImg(() => () => updateData())
+        }
     }, [])
 
     const updateData = () => {
@@ -28,6 +31,7 @@ const ChooseImg = (props) => {
                 item={item}
                 setFilenames={props.setFilenames}
                 filenames={props.filenames}
+                isProfile={props.isProfile}
             />
         })
     }
