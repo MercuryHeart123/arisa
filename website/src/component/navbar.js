@@ -61,7 +61,7 @@ const NavLine = styled.div`
     text-align: center;
     border-bottom: 1px solid black;
     width: 90%;
-    margin: 0 auto 0 auto;
+    margin: 0 auto 20px auto;
 `
 
 const NavDot = styled.div`
@@ -100,7 +100,7 @@ const Navbar = (props) => {
             <NavLogoAndLink>
                 <NavLogo>
                     <Link to='/'>
-                        <img src='/284993175_5201268449966638_749157627880997743_n.png' />
+                        <img src='/logo.png' />
                     </Link>
                 </NavLogo>
                 <NavWrapper>
