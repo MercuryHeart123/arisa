@@ -11,7 +11,7 @@ const register = async (req, res) => {
     let status, code
     const client = new MongoClient(uri);
     await client.connect();
-    let user = await client.db(`${process.env.db_name}`).collection("users").findOne(query);
+    let user = await client.db(`${process.env.DB_NAME}`).collection("users").findOne(query);
     if (!user) {
 
         //-----------------------------------------------------------------------------------------------------        
@@ -24,7 +24,7 @@ const register = async (req, res) => {
 
         else {
             let emailQuery = { email }
-            emailQuery = await client.db(`${process.env.db_name}`).collection("users").findOne(emailQuery);
+            emailQuery = await client.db(`${process.env.DB_NAME}`).collection("users").findOne(emailQuery);
             if (!emailQuery) {
                 //------------------------------------------------------------------------------------------------------
                 if (password.length < 8) {
@@ -38,7 +38,7 @@ const register = async (req, res) => {
                     let hashPassword = crypto.pbkdf2Sync(password, salt,
                         1000, 64, `sha512`).toString(`hex`);
                     let doc = { username, email, hashPassword, salt, admin: false }
-                    await client.db(`${process.env.db_name}`).collection("users").insertOne(doc);
+                    await client.db(`${process.env.DB_NAME}`).collection("users").insertOne(doc);
                     status = "Success"
                     msg = "Register Successful"
                     code = 200

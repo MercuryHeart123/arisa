@@ -16,7 +16,7 @@ const uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.en
 const port = process.env.PORT || 8080
 app.use(
     cors({
-        origin: ["http://localhost:3000"],
+        origin: ["http://20.239.172.184"],
         methods: ["GET", "POST", "DELETE"],
         credentials: true,
     })

@@ -54,8 +54,8 @@ const About = () => {
                             <div className="logoIcon">
                                 <AiOutlineInstagram />
                             </div>
-                            <a href='https://www.instagram.com/nnunoo.n/' target="_blank">
-                                nnunoo.n
+                            <a href='https://www.instagram.com/__a.ris.a__/' target="_blank">
+                                a.ris.a
                             </a>
                         </div>
                         <div className="logoInfo">
@@ -63,7 +63,7 @@ const About = () => {
                                 <BsLine />
                             </div>
                             <a href='https://lin.ee/2xJvZWsg4​' target="_blank">
-                                nnunoo.n
+                                @136zizzv
                             </a>
                         </div>
                         <div className="logoInfo">
@@ -71,7 +71,7 @@ const About = () => {
                                 <BsTelephone />
                             </div>
                             <span>
-                                089-123-1234
+                                088-6228534
                             </span>
                         </div>
                     </div>

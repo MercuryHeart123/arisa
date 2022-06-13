@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import ImagePopup from './images-slide/imagePopup';
 
@@ -32,55 +32,46 @@ const Wrapper = styled.div`
     }
 `
 
-const PicNames = styled.p`
-    position: absolute;
-    margin-left: 5px;
-    margin-top: 5px;
-    width: 300px;
-`
 
 const View = (props) => {
 
-    const [imgPopup,setImgPopup] = useState(false);
-    const [imgIndex,setImgIndex] = useState();
+    const [imgPopup, setImgPopup] = useState(false);
+    const [imgIndex, setImgIndex] = useState();
 
     let data = props.data
     let img = data.filenames;
     let ip = process.env.REACT_APP_IP || "localhost";
     let port = process.env.REACT_APP_PORT || 8080;
-    let url = `${ip}:${port}/image/view/` 
-    
+    let url = `${ip}:${port}/image/view/`
+
     return (props.data ? (
         <div>
-            <ImagePopup 
-                trigger={imgPopup} 
+            <ImagePopup
+                trigger={imgPopup}
                 imgPopup={setImgPopup}
                 index={imgIndex}
                 data={img}
                 url={url}
             />
-            <h1 style={{textAlign:"center",marginBottom:"4vh",marginTop:"4vh"}}>
+            <h1 style={{ textAlign: "center", marginBottom: "4vh", marginTop: "4vh" }}>
                 {data.name}
             </h1>
             <Gallery>
-                {img.map((image,index)=>{
-                    let num = index
-                    if(index < 10){ num = "0"+index }
-                    if(index == 0){ return }
-                    return(
-                    <Frame key={index} >
-                        <Wrapper>
-                            <Image src={`${url + image}`} onClick={()=>{
-                                setImgIndex(index)
-                                setImgPopup(true)
-                            }}/>
-                            <PicNames>{num}</PicNames>
-                        </Wrapper>
-                    </Frame>
+                {img.map((image, index) => {
+                    if (index == 0) { return }
+                    return (
+                        <Frame key={index} >
+                            <Wrapper>
+                                <Image src={`${url + image}`} onClick={() => {
+                                    setImgIndex(index)
+                                    setImgPopup(true)
+                                }} />
+                            </Wrapper>
+                        </Frame>
                     )
                 })}
-            </Gallery>  
-            <p style={{textAlign:"center",marginTop:"4vh"}}>
+            </Gallery>
+            <p style={{ textAlign: "center", marginTop: "4vh" }}>
                 {data.description}
             </p>
         </div>)
