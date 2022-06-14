@@ -26,12 +26,24 @@
   height: 70vh;
 }
 
+@media screen and (max-width: 992px) {
+  .image {
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .image {
+    height: 40vh;
+  }
+}
+
 .rightArrow {
   color: #FFF;
   position: absolute;
   top: 50%;
-  right: 150px;
-  font-size: 5rem;
+  right: 5%;
+  font-size: calc(100% + 10vmin);
   z-index: 10;
   cursor: pointer;
   transition: 1s ease;
@@ -48,8 +60,8 @@
   color: #FFF;
   position: absolute;
   top: 50%;
-  left: 150px;
-  font-size: 5rem;
+  left: 5%;
+  font-size: calc(100% + 10vmin);
   z-index: 10;
   cursor: pointer;
   transition: 1s ease;

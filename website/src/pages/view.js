@@ -1,57 +1,70 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import ImagePopup from './images-slide/imagePopup';
+import ReactLoading from 'react-loading'
 
 const Gallery = styled.div`
-    display: grid;
 
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+
     @media (max-width: 992px) {
         grid-template-columns: repeat(2, 1fr);
         max-width: 80%;
     }
-    @media (max-width: 576px) {
+    @media (max-width: 768px) {
         grid-template-columns: repeat(1, 1fr);
-        max-width: 80%
+        max-width: 80%;
     }
+
 `
 const Image = styled.img`
+
     width: 100%;
     cursor: pointer;
     transition: 1s ease;
+
     &:hover{
         transform: scale(1.08);
         transition-duration: 0.2s;
     }
+
 `
 const Frame = styled.div`
+
     padding: 50px;
     position: relative;
     text-align: center;
+
 `
 const Wrapper = styled.div`
+
     transition: 1s ease;
+
     &:hover{
         transform: scale(1.08);
         transition-duration: 0.2s;
     }
+
 `
 
 
 const View = (props) => {
 
+    console.log(props);
     const [imgPopup, setImgPopup] = useState(false);
     const [imgIndex, setImgIndex] = useState();
+    const [loading, setLoading] = useState(true);
 
     let data = props.data
     let img = data.filenames;
     let ip = process.env.REACT_APP_IP || "localhost";
     let port = process.env.REACT_APP_PORT || 8080;
     let url = `${ip}:${port}/image/view/`
-
+    
     return (props.data ? (
         <div>
             <ImagePopup
@@ -66,14 +79,14 @@ const View = (props) => {
             </h1>
             <Gallery>
                 {img.map((image, index) => {
-                    if (index == 0) { return }
+                    if (index === 0) { return }
                     return (
                         <Frame key={index} >
                             <Wrapper>
                                 <Image src={`${url + image}`} onClick={() => {
                                     setImgIndex(index)
                                     setImgPopup(true)
-                                }} />
+                                }}/>
                             </Wrapper>
                         </Frame>
                     )
