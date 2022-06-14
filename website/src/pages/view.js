@@ -4,14 +4,22 @@ import ImagePopup from './images-slide/imagePopup';
 
 const Gallery = styled.div`
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
-    // grid-gap: 10px;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 80%;
+    }
+    @media (max-width: 576px) {
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 80%
+    }
 `
 const Image = styled.img`
-    width: 300px;
+    width: 100%;
     cursor: pointer;
     transition: 1s ease;
     &:hover{
@@ -22,7 +30,7 @@ const Image = styled.img`
 const Frame = styled.div`
     padding: 50px;
     position: relative;
-    
+    text-align: center;
 `
 const Wrapper = styled.div`
     transition: 1s ease;

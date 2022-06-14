@@ -11,12 +11,13 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
+
 const app = express()
 const uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_IP}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 const port = process.env.PORT || 8080
 app.use(
     cors({
-        origin: ["http://20.239.172.184"],
+        origin: ["http://localhost:3000"],
         methods: ["GET", "POST", "DELETE"],
         credentials: true,
     })
