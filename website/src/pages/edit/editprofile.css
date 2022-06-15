@@ -8,7 +8,7 @@
 
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
-    width: 750px;
+    width: 70%;
     margin: 30px auto;
 }
 
@@ -19,7 +19,7 @@
 
 .changeImg {
     margin: 20px 0;
-    width: 640px;
+    width: 50%;
     cursor: pointer;
     background: white;
     border-radius: 4px;

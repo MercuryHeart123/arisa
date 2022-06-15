@@ -9,14 +9,14 @@ const EditProfile = (props) => {
     const [filenames, setFilenames] = useState()
     const [title, setTitle] = useState()
     const [caption, setCaption] = useState()
-    const [success,setSucces] = useState(false)
+    const [success, setSucces] = useState(false)
 
     let ip = process.env.REACT_APP_IP || "localhost";
     let port = process.env.REACT_APP_PORT || 8080;
     const imgUrl = `${ip}:${port}/image/view/`;
-    
+
     useEffect(() => {
-        
+
         updateData()
     }, [])
 
@@ -61,8 +61,8 @@ const EditProfile = (props) => {
 
     return (
         <div className="containerEditProfile">
-            {success && <Navigate to="/about"/>}
-            {filenames ? <img src={`${imgUrl + filenames}`} className="profileImage"/> : <img src='https://via.placeholder.com/250x250' className="profileImage"/>}
+            {success && <Navigate to="/about" />}
+            {filenames ? <img src={`${imgUrl + filenames}`} className="profileImage" /> : <img src='https://via.placeholder.com/250x250' className="profileImage" />}
             <div className="line"></div>
             <button class='changeImg' onClick={() => { setPopupChooseImg(true) }}>
                 Change profile image
@@ -74,7 +74,7 @@ const EditProfile = (props) => {
                 filenames={filenames}
                 isProfile={true}
             />
-            <div class="mb-3" style={{ width: '640px', textAlign: 'center' }}>
+            <div class="mb-3" style={{ width: '50%', textAlign: 'center' }}>
                 <form id="all-data" onSubmit={handleSubmit} enctype="multipart/form-data">
                     <div class="mb-3" style={{ textAlign: 'left' }}>
                         <label class="form-label">

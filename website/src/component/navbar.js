@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import axios from 'axios'
 import { BsCircleFill } from 'react-icons/bs'
+import { FaBars } from 'react-icons/fa';
+import { AiOutlineClose } from 'react-icons/ai';
+import './navbar.css'
 const Nav = styled.div`
     text-align: center;
 `
@@ -12,7 +15,7 @@ const NavLogoAndLink = styled.div`
     display:flex;
     position: relative;
     width:100%;
-
+    
     font-family: 'Sofia', cursive !important;
 `
 
@@ -36,26 +39,22 @@ const NavWrapper = styled.div`
     align-items: center;
     position: relative;
     width:70%;
+    justify-content: space-between;
+    @media screen and (max-width: 960px) {
+    display: none;
+  }
     
 `
 const NavLink = styled(Link)`
     color: black;
     text-decoration: none;
-    margin: 0 40px;
+    margin: ${props => props.mobile ? "10px 0" : "0 40px"};
     padding: 0 10px;
     /* &.active{
         color: gray;
     } */
 `
-const NavAuth = styled(Link)`
-    color: black;
-    text-decoration: none;
 
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(-50%,-50%);
-`
 const NavLine = styled.div`
     padding: 0.5rem 0;
     text-align: center;
@@ -84,8 +83,23 @@ const NavContent = styled.div`
     }
 
 `
+const Bars = styled(FaBars)`
+  display: none;
+  color: black;
+  @media screen and (max-width: 960px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 75%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+`;
 
 const Navbar = (props) => {
+    const [sidebar, setSidebar] = useState(false);
+
     const Logout = () => {
         axios.defaults.withCredentials = true;
         axios.post(`${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/logout`).then(() => {
@@ -103,45 +117,83 @@ const Navbar = (props) => {
                         <img src='/logo.png' />
                     </Link>
                 </NavLogo>
+                <Bars onClick={() => { setSidebar(!sidebar) }} />
+                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                    <div className='nav-menu-items' >
+                        <div className='navbar-toggle' onClick={() => setSidebar(!sidebar)}>
+                            <AiOutlineClose style={{ color: 'black' }} />
+                        </div>
+                        <NavLink onClick={() => setSidebar(!sidebar)} mobile={true} to={'/graphic-design'}>Graphic design</NavLink>
+                        <NavLink onClick={() => setSidebar(!sidebar)} mobile={true} to={'/interior-design'}>Interior design</NavLink>
+                        <NavLink onClick={() => setSidebar(!sidebar)} mobile={true} to={'/about'}>About</NavLink>
+                        {props.admin &&
+                            <NavLink onClick={() => setSidebar(!sidebar)} mobile={true} to={'/edit'}>Edit content</NavLink>
+                        }
+                        {props.admin &&
+                            <NavLink onClick={() => setSidebar(!sidebar)} mobile={true} to={'/editprofile'}>Edit profile</NavLink>
+                        }
+                        {!props.username &&
+                            <NavLink onClick={() => setSidebar(!sidebar)} mobile={true} to={'/login'}>Login</NavLink>
+                        }
+                        {props.username &&
+                            <NavLink onClick={() => setSidebar(!sidebar)} mobile={true} to={'/logout'}>Logout</NavLink>
+                        }
+                    </div>
+                </nav>
                 <NavWrapper>
-                    <NavContent>
-
-                        <NavLink to={'/graphic-design'}>Graphic design</NavLink>
-                        <NavDot>
-                            <BsCircleFill style={{ color: "#C392FF" }} />
-                        </NavDot>
-                    </NavContent>
-                    <NavContent>
-                        <NavLink to={'/interior-design'}>Interior design</NavLink>
-                        <NavDot>
-                            <BsCircleFill style={{ color: "#44D19D" }} />
-                        </NavDot>
-                    </NavContent>
-                    <NavContent>
-                        <NavLink to={'/about'}>About</NavLink>
-                        <NavDot>
-                            <BsCircleFill style={{ color: "#FCDD37" }} />
-                        </NavDot>
-                    </NavContent>
-                    {props.admin &&
+                    <div style={{ display: 'flex' }}>
                         <NavContent>
-                            <NavLink to={'/edit'}>Edit content</NavLink>
+                            <NavLink to={'/graphic-design'}>Graphic design</NavLink>
                             <NavDot>
-                                <BsCircleFill style={{ color: "#297373" }} />
+                                <BsCircleFill style={{ color: "#C392FF" }} />
                             </NavDot>
-                        </NavContent>}
-                    {props.admin && <NavContent>
-                        <NavLink to={'/editprofile'}>Edit profile</NavLink>
-                        <NavDot>
-                            <BsCircleFill style={{ color: "#FF8552" }} />
-                        </NavDot>
-                    </NavContent>}
+                        </NavContent>
+                        <NavContent>
+                            <NavLink to={'/interior-design'}>Interior design</NavLink>
+                            <NavDot>
+                                <BsCircleFill style={{ color: "#44D19D" }} />
+                            </NavDot>
+                        </NavContent>
+                        <NavContent>
+                            <NavLink to={'/about'}>About</NavLink>
+                            <NavDot>
+                                <BsCircleFill style={{ color: "#FCDD37" }} />
+                            </NavDot>
+                        </NavContent>
+                        {props.admin &&
+                            <NavContent>
+                                <NavLink to={'/edit'}>Edit content</NavLink>
+                                <NavDot>
+                                    <BsCircleFill style={{ color: "#297373" }} />
+                                </NavDot>
+                            </NavContent>}
+                        {props.admin &&
+                            <NavContent>
+                                <NavLink to={'/editprofile'}>Edit profile</NavLink>
+                                <NavDot>
+                                    <BsCircleFill style={{ color: 'red' }} />
+                                </NavDot>
+                            </NavContent>}
+                    </div>
+                    <div>
+                        {!props.username &&
+                            <NavContent>
+                                <NavLink to={'/login'}>Login</NavLink>
+                                <NavDot>
+                                    <BsCircleFill style={{ color: "#297373" }} />
+                                </NavDot>
+                            </NavContent>}
+                        {props.username &&
+                            <NavContent>
+                                <NavLink to={'/'} onClick={Logout}>Logout</NavLink>
+                                <NavDot>
+                                    <BsCircleFill style={{ color: "#297373" }} />
+                                </NavDot>
+                            </NavContent>
+                        }
+                    </div>
                 </NavWrapper>
-                {!props.username && <NavAuth to={'/login'}>Login</NavAuth>}
-                {props.username && <NavAuth to={'/'} onClick={Logout}>Logout</NavAuth>}
-
             </NavLogoAndLink>
-
             <NavLine />
         </Nav>
     )

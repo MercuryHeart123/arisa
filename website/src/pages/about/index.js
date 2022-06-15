@@ -62,7 +62,7 @@ const About = () => {
                             <div className="logoIcon">
                                 <BsLine />
                             </div>
-                            <a href='https://lin.ee/2xJvZWsg4​' target="_blank">
+                            <a href='https://line.me/R/ti/p/%40136zizzv' target="_blank">
                                 @136zizzv
                             </a>
                         </div>
