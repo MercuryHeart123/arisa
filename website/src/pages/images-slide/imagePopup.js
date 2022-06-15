@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './imgPopup.css'
 import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle, IoIosClose } from 'react-icons/io'
 
+
 function ImagePopup(props) {
 
     console.log(props.index);
@@ -32,14 +33,12 @@ function ImagePopup(props) {
             <IoMdArrowDroprightCircle className="rightArrow" onClick={nextImg} />
             <IoMdArrowDropleftCircle className="leftArrow" onClick={prevImg} />
             {img.map((img, index) => {
-                let num = index
-                if (index < 10) { num = "0" + index }
                 if (index === 0) { return }
                 return (
                     <section className={index === current ? "slide active" : "slide"} key={index}>
                         {index === current && (
                             <div>
-                                <img src={`${props.url + img}`} alt={num} className="image" />
+                                <img src={`${props.url + img}`} alt={index} className="image" />
                             </div>
                         )}
                     </section>

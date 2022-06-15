@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import * as Io from 'react-icons/io'
 import './chooseImg.css'
+
 const EachImg = ({ item, filenames, setFilenames, isProfile }) => {
     let ip = process.env.REACT_APP_IP || "localhost";
     let port = process.env.REACT_APP_PORT || 8080;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
 import axios from 'axios'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import { BsLine, BsTelephone } from 'react-icons/bs'
