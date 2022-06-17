@@ -15,6 +15,9 @@ const Interior = () => {
             let data = res.data
             setImages(data)
         })
+        .catch((err)=>{
+            console.log(err);
+        })
 
     }, [])
 
@@ -23,7 +26,7 @@ const Interior = () => {
             <StackGrid columnWidth={400} duration={450} monitorImagesLoaded={true} >
                 {images && images.map((img, index) => {
                     return (
-                        <div style={{ margin: '30px 0' }}>
+                        <div style={{ margin: '0 30px' }}>
                             <CircularImg
                                 img={img}
                                 index={index}

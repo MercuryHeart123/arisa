@@ -4,6 +4,7 @@ import { AiOutlineInstagram } from 'react-icons/ai'
 import { BsLine, BsTelephone } from 'react-icons/bs'
 import './style.css'
 import ReactLoading from 'react-loading'
+import ProfilePopup from './profilePopup'
 
 
 let ip = process.env.REACT_APP_IP || "localhost";
@@ -13,6 +14,7 @@ const About = () => {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false);
+    const [popup , setPopup] = useState(false);
 
     useEffect(() => {
 
@@ -33,13 +35,20 @@ const About = () => {
 
     return (
         <div>
+            <ProfilePopup
+                trigger={popup}
+                setPopup={setPopup}
+                img={`${ip}:${port}/image/view/${data.filenames}`}
+            />
             {loading ?
                 (<div style={{ display: "flex", justifyContent: "center" }}>
                     <ReactLoading type={"bars"} color={"black"} height={"20%"} width={"20%"} />
                 </div>) :
                 (<div className="containerProfile">
                     <div className="profile">
-                        <img src={`${ip}:${port}/image/view/${data.filenames}`} />
+                        <img src={`${ip}:${port}/image/view/${data.filenames}`} onClick={()=>{
+                            setPopup(true);
+                        }}/>
                         <h1>
                             {data.title}
                         </h1>

@@ -55,7 +55,6 @@
   transition-duration: 0.2s;
 }
 
-
 .leftArrow {
   color: #FFF;
   position: absolute;
@@ -71,13 +70,6 @@
 
   transform: scale(1.08);
   transition-duration: 0.2s;
-}
-
-.numpics {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #fff;
-  font-weight: 700;
 }
 
 .closeButton {

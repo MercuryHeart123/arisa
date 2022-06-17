@@ -15,6 +15,9 @@ const Graphic = () => {
             // console.log(data);
             setImages(data)
         })
+        .catch((err)=>{
+            console.log(err);
+        })
 
     }, [])
 
