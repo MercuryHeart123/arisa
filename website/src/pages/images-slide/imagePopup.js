@@ -8,7 +8,22 @@ function ImagePopup(props) {
 
     useEffect(() => {
         setCurrent(props.index)
+        
     }, [props.index])
+
+    document.onkeydown = (e) => {
+        switch (e.keyCode) {
+            case 27: //esc to exit
+                props.imgPopup(false);
+                break;
+            case 37: //leftArrow
+                prevImg();
+                break;
+            case 39: //rightArrow
+                nextImg();
+                break;
+        }
+    };
 
     const img = props.data
     const length = props.data.length;

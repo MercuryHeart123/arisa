@@ -73,28 +73,21 @@ const Login = (props) => {
 
                 <div className="form-group" style={{ marginTop: "2vh" }}>
                     <label>Password</label>
-                    {/* <input
-                        type="password"
-                        className="form-control"
-                        required={true}
-                        name="password"
-                        placeholder="Enter password"
-                        style={{ marginTop: "2vh" }}
-                    /> */}
+                    
                      <div style={{display:"flex"}}>
                         <input
                             type={!showPassword ? "password" : "text"}
                             className="form-control"
                             required={true}
-                            name="password"
+                            name="password" 
                             placeholder="Password"
                             style={{ marginTop: "2vh"}}
                         />
                      <div style={{marginLeft:"0.5vw"}}>
-                        {!showPassword ? <AiOutlineEye style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
+                        {!showPassword ? <AiFillEyeInvisible style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
                             onClick={passwordVisibility}
                         /> : 
-                        <AiFillEyeInvisible style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
+                        <AiOutlineEye style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
                             onClick={passwordVisibility}
                         />}
                     </div>

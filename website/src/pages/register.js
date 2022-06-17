@@ -135,16 +135,16 @@ function Register() {
                     <input
                         type={!showPassword ? "password" : "text"}
                         className="form-control"
-                        required={true}
+                        required={true} AiOutlineEye
                         name="password"
                         placeholder="Password"
                         style={{ marginTop: "2vh",borderColor:passwordColor}}
                     />
                      <div style={{marginLeft:"0.5vw"}}>
-                        {!showPassword ? <AiOutlineEye style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
+                        {!showPassword ? <AiFillEyeInvisible style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
                             onClick={passwordVisibility}
                         /> : 
-                        <AiFillEyeInvisible style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
+                        <AiOutlineEye style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
                             onClick={passwordVisibility}
                         />}
                     </div>
@@ -164,10 +164,10 @@ function Register() {
                         style={{ marginTop: "2vh",borderColor:passwordColor}}
                     />
                     <div style={{marginLeft:"0.5vw"}}>
-                        {!showPassword ? <AiOutlineEye style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
+                        {!showPassword ? <AiFillEyeInvisible style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
                             onClick={passwordVisibility}
                         /> : 
-                        <AiFillEyeInvisible style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
+                        <AiOutlineEye style={{fontSize:"25px" ,marginTop:"2.5vh" ,cursor:"pointer"}}
                             onClick={passwordVisibility}
                         />}
                     </div>
@@ -189,7 +189,6 @@ function Register() {
             >
                 Sign Up
             </button>
-
         </form>
     </Container>
   )
