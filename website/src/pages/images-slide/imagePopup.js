@@ -4,9 +4,6 @@ import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle, IoIosClose } from 'r
 
 
 function ImagePopup(props) {
-
-    console.log(props.index);
-
     const [current, setCurrent] = useState();
 
     useEffect(() => {
