@@ -26,11 +26,7 @@ const Interior = () => {
             <StackGrid columnWidth={400} duration={450} monitorImagesLoaded={true} >
                 {images && images.map((img, index) => {
                     return (
-<<<<<<< HEAD
-                        <div style={{ margin: '0 30px' }}>
-=======
                         <div style={{ margin: '30px 30px' }}>
->>>>>>> 422cc2b054c1981fa54aa513d76b518ddfc91f6c
                             <CircularImg
                                 img={img}
                                 index={index}
