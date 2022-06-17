@@ -189,7 +189,6 @@ function Register() {
             >
                 Sign Up
             </button>
-
         </form>
     </Container>
   )

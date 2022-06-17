@@ -34,7 +34,8 @@ const Image = styled.img`
 
 `
 const Frame = styled.div`
-
+    
+    display: ${props => props.loading ? "none" : "block"};
     padding: 50px;
     position: relative;
     text-align: center;
@@ -77,18 +78,26 @@ const View = (props) => {
             <h1 style={{ textAlign: "center", marginBottom: "4vh", marginTop: "4vh" }}>
                 {data.name}
             </h1>
-            <Gallery>
+            
+            <Gallery onLoad={()=>{setTimeout(() => {setLoading(false)
+                
+            }, 200) }}>
                 {img.map((image, index) => {
                     if (index === 0) { return }
                     return (
-                        <Frame key={index} >
-                            <Wrapper>
-                                <Image src={`${url + image}`} onClick={() => {
-                                    setImgIndex(index)
-                                    setImgPopup(true)
-                                }}/>
-                            </Wrapper>
-                        </Frame>
+                        <>
+                            {loading ? <div style={{ display: "flex", justifyContent: "center" }}>
+                                <ReactLoading type={"bars"} color={"black"} height={"20%"} width={"20%"} />
+                            </div> : ""}
+                            <Frame key={index} loading={loading}>
+                                <Wrapper>
+                                    <Image src={`${url + image}`} onClick={() => {
+                                        setImgIndex(index)
+                                        setImgPopup(true)
+                                    }}/>
+                                </Wrapper>
+                            </Frame>
+                        </>
                     )
                 })}
             </Gallery>
