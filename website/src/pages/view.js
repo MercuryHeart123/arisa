@@ -80,8 +80,9 @@ const View = (props) => {
             </h1>
             
             <Gallery onLoad={()=>{setTimeout(() => {setLoading(false)
-                
+
             }, 100) }}>
+                
                 {img.map((image, index) => {
                     if (index === 0) { return }
                     return (
