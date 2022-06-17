@@ -81,14 +81,16 @@ const View = (props) => {
             
             <Gallery onLoad={()=>{setTimeout(() => {setLoading(false)
                 
-            }, 200) }}>
+            }, 100) }}>
                 {img.map((image, index) => {
                     if (index === 0) { return }
                     return (
                         <>
-                            {loading ? <div style={{ display: "flex", justifyContent: "center" }}>
+                            {loading ? 
+                            (<div style={{ display: "flex", justifyContent: "center" }}>
                                 <ReactLoading type={"bars"} color={"black"} height={"20%"} width={"20%"} />
-                            </div> : ""}
+                            </div>) : ""}
+                            
                             <Frame key={index} loading={loading}>
                                 <Wrapper>
                                     <Image src={`${url + image}`} onClick={() => {
